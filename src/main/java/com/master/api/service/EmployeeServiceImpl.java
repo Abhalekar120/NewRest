@@ -1,5 +1,7 @@
 package com.master.api.service;
 
+import java.math.BigDecimal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,5 +31,22 @@ public class EmployeeServiceImpl implements EmployeeService {
 		emp1.setAdharNumber(emp.getAdharNumber());
 		
 		this.repo.save(emp1);
+	}
+
+	@Override
+	public void getEmployees() {
+		this.repo.findAll();		
+	}
+
+	@Override
+	public void getEmployeeById(Long id) {
+	this.repo.findById(id).orElseThrow();
+		
+	}
+
+	@Override
+	public void getEmployeeByAdhar(BigDecimal adhar) {
+		this.repo.findOne(adhar).orElseThrow();
+		
 	}
 }
