@@ -34,7 +34,7 @@ public class Employee {
 	@Column(name="Address")
 	private String address;
 	
-	@Column(name="Address")
+	@Column(name="Gender")
 	private String gender;
 	
 	@Column(name="mobileNo")
