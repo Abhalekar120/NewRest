@@ -10,4 +10,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Autowired
 	private EmployeeRepo repo;
+
+	@Override
+	public void deleteEmployee(Long id) {
+		this.repo.deleteById(id);
+		
+	}
 }
