@@ -19,4 +19,6 @@ public interface EmployeeService {
 
 	void savePost(Employee emp);
 
+	void deleteEmployee(Long id);
+
 }
