@@ -22,6 +22,7 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeService service;
 	
+	//sagar rokade heres saagsgsagsagsag
 	@PutMapping("/employee")
 	public ResponseEntity<?> updateEmp(@RequestBody Employee emp,@PathVariable Long id){
 		this.service.changesEmpDetails(emp,id);
