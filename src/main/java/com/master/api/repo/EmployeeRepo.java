@@ -1,6 +1,7 @@
 package com.master.api.repo;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,6 +12,8 @@ import com.master.api.entity.Employee;
 public interface EmployeeRepo extends JpaRepository<Employee, Long> {
 
 	Optional<Employee> findOne(BigDecimal adhar);
+
+	void findAll(LocalDate date);
 
 
 }

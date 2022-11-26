@@ -1,6 +1,7 @@
 package com.master.api.controller;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,9 +41,15 @@ public class EmployeeController {
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
-	@GetMapping("/employee/{id}")
-	public ResponseEntity<List<Employee>> getEmployeeByAdhar(@PathVariable BigDecimal adhar){
+	@GetMapping("/employee/{adhar}")
+	public ResponseEntity<Employee> getEmployeeByAdhar(@PathVariable BigDecimal adhar){
 		this.service.getEmployeeByAdhar(adhar);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	@GetMapping("/employee/{Date}")
+	public ResponseEntity<List<Employee>> getEmployeeByDate(@PathVariable LocalDate Date){
+		this.service.getEmployeeByDate(Date);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }
