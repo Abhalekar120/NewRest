@@ -59,8 +59,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	@Override
 	public void savePost(Employee emp) {
-
 		this.repo.save(emp);
 
+	}
+
+	@Override
+	public void deleteEmployee(Long id) {
+		this.repo.deleteById(id);
+		
 	}
 }
