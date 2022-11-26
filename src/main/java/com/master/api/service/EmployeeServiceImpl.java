@@ -30,30 +30,37 @@ public class EmployeeServiceImpl implements EmployeeService {
 		emp1.setUpdatedDateAndTime(emp.getUpdatedDateAndTime());
 		emp1.setPanCard(emp.getPanCard());
 		emp1.setAdharNumber(emp.getAdharNumber());
-		
+
 		this.repo.save(emp1);
 	}
 
 	@Override
 	public void getEmployees() {
-		this.repo.findAll();		
+		this.repo.findAll();
 	}
 
 	@Override
 	public void getEmployeeById(Long id) {
-	this.repo.findById(id).orElseThrow();
-		
+		this.repo.findById(id).orElseThrow();
+
 	}
 
 	@Override
 	public void getEmployeeByAdhar(BigDecimal adhar) {
 		this.repo.findOne(adhar).orElseThrow();
-		
+
 	}
 
 	@Override
 	public void getEmployeeByDate(LocalDate date) {
 		this.repo.findAll(date);
-		
+
+	}
+
+	@Override
+	public void savePost(Employee emp) {
+
+		this.repo.save(emp);
+
 	}
 }

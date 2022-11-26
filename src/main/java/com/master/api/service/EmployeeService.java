@@ -17,4 +17,6 @@ public interface EmployeeService {
 
 	void getEmployeeByDate(LocalDate date);
 
+	void savePost(Employee emp);
+
 }
