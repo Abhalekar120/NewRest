@@ -43,15 +43,15 @@ public class Employee {
 	@Column(name="Email")
 	private String emailId;
 	
-	@Column(name="Created_Date")
-	private LocalDate createdDate;
+//	@Column(name="Created_Date")
+//	private LocalDate createdDate;
+//	
+//	@Column(name="Created_Time")
+//	private LocalTime createdtime;
 	
-	@Column(name="Created_Time")
-	private LocalTime createdtime;
-	
-	@Column(name="Updated_Date_Time")
-	private LocalDateTime updatedDateAndTime;
-	
+//	@Column(name="Updated_Date_Time")
+//	private LocalDateTime updatedDateAndTime;
+//	
 	@Column(name="Adhar_Number")
 	private BigDecimal adharNumber;
 	
