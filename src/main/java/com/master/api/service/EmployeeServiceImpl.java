@@ -2,6 +2,7 @@ package com.master.api.service;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,15 +20,15 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public void changesEmpDetails(Employee emp, Long id) {
 		Employee emp1 = this.repo.findById(id).orElseThrow();
 		emp1.setId(emp.getId());
-		emp1.setFirstName(emp.getAddress());
+		emp1.setFirstName(emp.getFirstName());
 		emp1.setLastName(emp.getLastName());
 		emp1.setGender(emp.getGender());
 		emp1.setAddress(emp.getAddress());
 		emp1.setMobileNo(emp.getMobileNo());
 		emp1.setEmailId(emp.getEmailId());
-		emp1.setCreatedDate(emp.getCreatedDate());
-		emp1.setCreatedtime(emp.getCreatedtime());
-		emp1.setUpdatedDateAndTime(emp.getUpdatedDateAndTime());
+//		emp1.setCreatedDate(emp.getCreatedDate());
+//		emp1.setCreatedtime(emp.getCreatedtime());
+//		emp1.setUpdatedDateAndTime(emp.getUpdatedDateAndTime());
 		emp1.setPanCard(emp.getPanCard());
 		emp1.setAdharNumber(emp.getAdharNumber());
 
@@ -35,31 +36,31 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public void getEmployees() {
-		this.repo.findAll();
+	public List<Employee> getEmployees() {
+		return this.repo.findAll();
 	}
 
 	@Override
-	public void getEmployeeById(Long id) {
-		this.repo.findById(id).orElseThrow();
+	public Employee getEmployeeById(Long id) {
+		return this.repo.findById(id).orElseThrow();
 
 	}
 
+//	@Override
+//	public void getEmployeeByAdhar(BigDecimal adhar) {
+//		this.repo.findByadhar(adhar).orElseThrow();
+//
+//	}
+//
+//	@Override
+//	public void getEmployeeByDate(LocalDate date) {
+//		this.repo.findAll(date);
+//
+//	}
+
 	@Override
-	public void getEmployeeByAdhar(BigDecimal adhar) {
-		this.repo.findOne(adhar).orElseThrow();
-
-	}
-
-	@Override
-	public void getEmployeeByDate(LocalDate date) {
-		this.repo.findAll(date);
-
-	}
-
-	@Override
-	public void savePost(Employee emp) {
-		this.repo.save(emp);
+	public Employee savePost(Employee emp) {
+		return this.repo.save(emp);
 
 	}
 
@@ -68,4 +69,16 @@ public class EmployeeServiceImpl implements EmployeeService {
 		this.repo.deleteById(id);
 		
 	}
+
+	@Override
+	public Employee patchEmployee(Long id) {
+	return this.repo.findById(id).orElseThrow();
+	
+	}
+
+//	@Override
+//	public Employee saveEmp(Employee emp) {
+//		// TODO Auto-generated method stub
+//		return this.repo.save(emp);
+//	}
 }

@@ -1,7 +1,8 @@
-package com.master.api.service;
+	package com.master.api.service;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 import com.master.api.entity.Employee;
 
@@ -9,16 +10,20 @@ public interface EmployeeService {
 
 	void changesEmpDetails(Employee emp, Long id);
 
-	void getEmployees();
+	List<Employee> getEmployees();
 
-	void getEmployeeById(Long id);
+	Employee getEmployeeById(Long id);
 
-	void getEmployeeByAdhar(BigDecimal adhar);
+	//void getEmployeeByAdhar(BigDecimal adhar);
 
-	void getEmployeeByDate(LocalDate date);
+	//void getEmployeeByDate(LocalDate date);
 
-	void savePost(Employee emp);
+	Employee savePost(Employee emp);
 
 	void deleteEmployee(Long id);
+
+	Employee patchEmployee(Long id);
+
+//	Employee saveEmp(Employee emp);
 
 }

@@ -11,9 +11,9 @@ import com.master.api.entity.Employee;
 @Repository
 public interface EmployeeRepo extends JpaRepository<Employee, Long> {
 
-	Optional<Employee> findOne(BigDecimal adhar);
+	//Optional<Employee> findOne(BigDecimal adhar);
 
-	void findAll(LocalDate date);
+//	void findAll(LocalDate date);
 
 
 }
