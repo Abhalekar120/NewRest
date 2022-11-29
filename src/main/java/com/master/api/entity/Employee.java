@@ -23,6 +23,7 @@ public class Employee {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="Id")
 	private Long id;
 	
 	@Column(name="First_Name")
@@ -43,14 +44,14 @@ public class Employee {
 	@Column(name="Email")
 	private String emailId;
 	
-	@Column(name="Created_Date")
-	private LocalDate createdDate;
-	
-	@Column(name="Created_Time")
-	private LocalTime createdtime;
-	
-	@Column(name="Updated_Date_Time")
-	private LocalDateTime updatedDateAndTime;
+//	@Column(name="Created_Date")
+//	private LocalDate createdDate;
+//	
+//	@Column(name="Created_Time")
+//	private LocalTime createdtime;
+//	
+//	@Column(name="Updated_Date_Time")
+//	private LocalDateTime updatedDateAndTime;
 	
 	@Column(name="Adhar_Number")
 	private BigDecimal adharNumber;

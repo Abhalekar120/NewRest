@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,14 +26,13 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeService service;
 
-	@PostMapping("/employee/{id}")
-	public ResponseEntity<Employee> savePost(@RequestBody Employee emp){
-		
+	@PostMapping("/employee")
+	public ResponseEntity<Employee> savePost(@RequestBody Employee emp){		
 		this.service.savePost(emp);
 		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 	
-	@PutMapping("/employee")
+	@PutMapping("/employee/{id}")
 	public ResponseEntity<?> updateEmp(@RequestBody Employee emp,@PathVariable Long id){
 		this.service.changesEmpDetails(emp,id);
 		return new ResponseEntity<>(HttpStatus.OK);
@@ -41,27 +41,33 @@ public class EmployeeController {
 	
 	@GetMapping("/employee")
 	public ResponseEntity<List<Employee>> getEmployees(){
-		this.service.getEmployees();
-		return new ResponseEntity<>(HttpStatus.OK);
+		List<Employee> employees = this.service.getEmployees();
+		return new ResponseEntity<List<Employee>>(employees,HttpStatus.OK);
 	}
 	
 	@GetMapping("/employee/{id}")
-	public ResponseEntity<List<Employee>> getEmployeeById(@PathVariable Long id){
-		this.service.getEmployeeById(id);
-		return new ResponseEntity<>(HttpStatus.OK);
+	public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id){
+		Employee emp=this.service.getEmployeeById(id);
+		return new ResponseEntity<Employee>(emp,HttpStatus.OK);
 	}
 	
-	@GetMapping("/employee/{adhar}")
-	public ResponseEntity<Employee> getEmployeeByAdhar(@PathVariable BigDecimal adhar){
-		this.service.getEmployeeByAdhar(adhar);
-		return new ResponseEntity<>(HttpStatus.OK);
+	@GetMapping("/employee/personaldetails/{id}")
+	public ResponseEntity<Employee> getEmployeeDetails(@PathVariable Long id){
+		Employee emp=this.service.getEmployeeDetails(id);
+		return new ResponseEntity<Employee>(emp,HttpStatus.OK);
 	}
 	
-	@GetMapping("/employee/{Date}")
-	public ResponseEntity<List<Employee>> getEmployeeByDate(@PathVariable LocalDate Date){
-		this.service.getEmployeeByDate(Date);
-		return new ResponseEntity<>(HttpStatus.OK);
-	}
+//	@GetMapping("/employee/{adhar}")
+//	public ResponseEntity<Employee> getEmployeeByAdhar(@PathVariable BigDecimal adhar){
+//		this.service.getEmployeeByAdhar(adhar);
+//		return new ResponseEntity<>(HttpStatus.OK);
+//	}
+//	
+//	@GetMapping("/employee/{Date}")
+//	public ResponseEntity<List<Employee>> getEmployeeByDate(@PathVariable LocalDate Date){
+//		this.service.getEmployeeByDate(Date);
+//		return new ResponseEntity<>(HttpStatus.OK);
+//	}
 	
 	@DeleteMapping("/employee/{id}")
 	public ResponseEntity<?>deleteEmployee(@PathVariable Long id) {
